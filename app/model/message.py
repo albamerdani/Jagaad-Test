@@ -1,15 +1,28 @@
-from app.db import db, sqlalchemy
+from app.db.database import db, sqlalchemy, engine
+from sqlalchemy import Column, Integer, String, Double, UUID
+from sqlalchemy.orm import declarative_base
+
+Base = declarative_base()
 
 messages = sqlalchemy.Table(
-    "message",
-    sqlalchemy.Column("customerId", sqlalchemy.String, primary_key=True),
+    "stats",
+    sqlalchemy.Column("customerId", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("type", sqlalchemy.String),
     sqlalchemy.Column("amount", sqlalchemy.DOUBLE),
     sqlalchemy.Column("uuid", sqlalchemy.UUID),
 )
 
 
-class Message:
+class Stats(Base):
+    __tablename__ = "stats"
+
+    customerId = Column(Integer, primary_key=True)
+    type = Column(String)
+    amount = Column(Double)
+    uuid = Column(UUID)
+
+    Base.metadata.create_all(engine)
+
     @classmethod
     async def get(cls, id):
         query = messages.select().where(messages.c.id == id)

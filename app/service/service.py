@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
-from app import model
+from app.model.message import messages as model
 from app.db.database import SessionLocal
 
 

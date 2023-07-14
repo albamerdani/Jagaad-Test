@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 
 
-class Message(BaseModel):
+class Stats(BaseModel):
+
     customerId: int
     type: str
-    amount: str
+    amount: int
     uuid: str
 
