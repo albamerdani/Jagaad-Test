@@ -85,6 +85,7 @@ to get the task done
 
 
 ##Solution Instructions
+
 To build the image run the following commands:
 
 `docker-compose build`
