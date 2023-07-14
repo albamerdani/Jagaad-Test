@@ -82,3 +82,23 @@ to get the task done
 ● use git and write well formed commit messages
 
 ● use of docker is appreciated
+
+
+##Solution Instructions
+To build the image run the following commands:
+
+`docker-compose build`
+
+to make migrations
+
+` docker-compose run web alembic revision --autogenerate`
+
+to migrate
+
+`docker-compose run web alembic upgrade head`
+
+To run it
+
+`docker-compose up`
+
+open your browser and go to http://localhost:8000
