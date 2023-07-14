@@ -21,27 +21,27 @@ class Message(Base):
 # Request body model based on the JSON schema
 class MessageType(BaseModel):
     __tablename__ = "messageType_stats"
-    message_type: Column(String, primary_key=True, index=True)   #str
-    message_count: Column(Integer)  #int
-    total_amount: Column(Double) #float
+    message_type = Column(String, primary_key=True, index=True)   #str
+    message_count = Column(Integer)  #int
+    total_amount = Column(Double) #float
 
 
 # Request body model based on the JSON schema
 class MessageUuid(BaseModel):
     __tablename__ = "messageUuid_stats"
-    message_Uuid: Column(String, primary_key=True, index=True)   #str
-    message_type: Column(String)   #str
+    message_uuid = Column(String, primary_key=True, index=True)   #str
+    message_type = Column(String)   #str
     customer_id = Column(Integer)  #int
-    total_amount: Column(Double) #float
+    total_amount = Column(Double) #float
 
 
 # Request body model based on the JSON schema
 class CustomerId(BaseModel):
     __tablename__ = "customerId_stats"
-    message_Uuid: Column(String, primary_key=True, index=True)   #str
+    message_uuid = Column(String, primary_key=True, index=True)   #str
     customer_id = Column(Integer)  #int
-    message_type: Column(String)   #str
-    amount: Column(Double) #float
+    message_type = Column(String)   #str
+    amount = Column(Double) #float
 
 # Create the table if it doesn't exist
 Base.metadata.create_all(bind=engine)
@@ -53,7 +53,7 @@ Base.metadata.create_all(bind=engine)
 #
 # class Stats(BaseModel):
 #
-#     customerId: int
+#     customer_id: int
 #     type: str
 #     amount: int
 #     uuid: str
@@ -62,7 +62,7 @@ Base.metadata.create_all(bind=engine)
 #
 # stats = sqlalchemy.Table(
 #     "stats",
-#     sqlalchemy.Column("customerId", sqlalchemy.Integer, primary_key=True),
+#     sqlalchemy.Column("customer_id", sqlalchemy.Integer, primary_key=True),
 #     sqlalchemy.Column("type", sqlalchemy.String),
 #     sqlalchemy.Column("amount", sqlalchemy.DOUBLE),
 #     sqlalchemy.Column("uuid", sqlalchemy.UUID),

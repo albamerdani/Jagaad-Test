@@ -1,7 +1,7 @@
 -- Create the stats table
 CREATE TABLE stats (
     id SERIAL PRIMARY KEY,
-    customerId INTEGER NOT NULL,
+    customer_id INTEGER NOT NULL,
     type VARCHAR NOT NULL,
     amount VARCHAR NOT NULL,
     uuid UUID NOT NULL
@@ -24,30 +24,30 @@ CREATE TABLE messageType_stats (
 
 -- Create the messageUuid_stats table
 CREATE TABLE messageUuid_stats (
-    message_Uuid UUID PRIMARY KEY,
+    message_uuid UUID PRIMARY KEY,
     customer_id INTEGER NOT NULL,
     message_type VARCHAR NOT NULL,
     amount NUMERIC(12, 3) NOT NULL
 );
 
 -- Create the primary key index on the messageUuid_stats table
-CREATE INDEX idx_messageUuid_stats ON messageUuid_stats (messageUuid);
+CREATE INDEX idx_messageUuid_stats ON messageUuid_stats (message_uuid);
 
 -- Create the foreign key constraints
 ALTER TABLE stats ADD CONSTRAINT fk_customerId_stats
-    FOREIGN KEY (customerId)
-    REFERENCES customerId_stats (customerId)
+    FOREIGN KEY (customer_id)
+    REFERENCES customerId_stats (customer_id)
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
 ALTER TABLE stats ADD CONSTRAINT fk_messageType_stats
     FOREIGN KEY (type)
-    REFERENCES messageType_stats (messageType)
+    REFERENCES messageType_stats (message_type)
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
 ALTER TABLE stats ADD CONSTRAINT fk_messageUuid_stats
     FOREIGN KEY (uuid)
-    REFERENCES messageUuid_stats (messageUuid)
+    REFERENCES messageUuid_stats (message_uuid)
     ON UPDATE CASCADE
     ON DELETE CASCADE;
