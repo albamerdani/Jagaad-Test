@@ -1,9 +1,9 @@
 from fastapi.testclient import TestClient
 import pytest
 
-from app import main
+from app.main import jagaad_app
 
-client = TestClient(main)
+client = TestClient(jagaad_app)
 
 
 def test_process_message():
