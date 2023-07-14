@@ -20,8 +20,8 @@ def get_stats(db: Depends(get_db)):
 
 
 
-from app.model.message import Message as ModelMessage
-from app.schema import Message as SchemaMessage
+from app.model.message import Stats as ModelMessage
+from app.db.schema import Stats as SchemaMessage
 from app import service
 
 

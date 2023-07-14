@@ -4,7 +4,7 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-messages = sqlalchemy.Table(
+stats = sqlalchemy.Table(
     "stats",
     sqlalchemy.Column("customerId", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("type", sqlalchemy.String),
@@ -25,13 +25,13 @@ class Stats(Base):
 
     @classmethod
     async def get(cls, id):
-        query = messages.select().where(messages.c.id == id)
+        query = stats.select().where(stats.c.id == id)
         message = await db.fetch_one(query)
         return message
 
     @classmethod
     async def create(cls, **message):
-        query = messages.insert().values(**message)
+        query = stats.insert().values(**message)
         message_id = await db.execute(query)
         return message_id
 
