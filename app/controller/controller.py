@@ -4,6 +4,7 @@ from app.service.service import get_db
 import app.model.message as msg
 import app.service.service as service
 import logging
+from typing import Dict, List
 from fastapi import FastAPI
 
 #router = FastAPI()
@@ -12,18 +13,20 @@ router = APIRouter()
 log = logging.getLogger("Jagaad Test Logs")
 
 
-@router.post("/messages")
+@router.post("/messages", response_model=Dict[str, msg.Message])
 def process_message(message: msg.Message) -> msg.Message:
     db = Depends(get_db)
     processed_message = service.process_message(db, message)
     log.info("message: Message processed successfully")
-    return message
+    log.info(message)
+    return processed_message
 
 
-@router.get("/")
+@router.get("/", response_model=Dict[str, List[msg.Message]])
 def get_stats() -> list[msg.Message]:
     db = Depends(get_db)
     stats = service.get_stats(db)
+    log.info(stats)
     return stats
 
 
