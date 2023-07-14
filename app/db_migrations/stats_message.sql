@@ -9,24 +9,24 @@ CREATE TABLE stats (
 
 -- Create the customerId_stats table
 CREATE TABLE customerId_stats (
-    customerId INTEGER PRIMARY KEY,
-    messageCount INTEGER NOT NULL DEFAULT 0,
-    totalAmount NUMERIC(12, 3) NOT NULL DEFAULT 0.0
+    customer_id INTEGER PRIMARY KEY,
+    message_count INTEGER NOT NULL DEFAULT 0,
+    total_amount NUMERIC(12, 3) NOT NULL DEFAULT 0.0
 );
 
 -- Create the messageType_stats table
 CREATE TABLE messageType_stats (
-    messageType VARCHAR PRIMARY KEY,
-    messageCount INTEGER NOT NULL DEFAULT 0,
-    totalAmount NUMERIC(12, 3) NOT NULL DEFAULT 0.0
+    message_type VARCHAR PRIMARY KEY,
+    message_count INTEGER NOT NULL DEFAULT 0,
+    total_amount NUMERIC(12, 3) NOT NULL DEFAULT 0.0
 );
 
 
 -- Create the messageUuid_stats table
 CREATE TABLE messageUuid_stats (
-    messageUuid UUID PRIMARY KEY,
-    customerId INTEGER NOT NULL,
-    messageType VARCHAR NOT NULL,
+    message_Uuid UUID PRIMARY KEY,
+    customer_id INTEGER NOT NULL,
+    message_type VARCHAR NOT NULL,
     amount NUMERIC(12, 3) NOT NULL
 );
 
