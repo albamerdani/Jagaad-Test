@@ -5,16 +5,11 @@ FROM python:3.9
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
-COPY app /app/
-COPY app/configs /app/
-COPY app/unittests /app/
-COPY app/db_migrations /app/
-COPY app/main.py /app/
-COPY requirements.txt /app/
+WORKDIR /
+COPY . /
 
 # Install dependencies
 RUN pip install -r /app/requirements.txt
 
 EXPOSE 8000
-ENTRYPOINT["/bin/sh"]
+#ENTRYPOINT["/bin/sh"]
